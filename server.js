@@ -79,7 +79,7 @@ app.put('/api/notes/:title', (req, res) => {
     
 });
 // delete note 
-app.delete('/api/notes/:title', (req, res) => {
+app.delete('/api/notes/:id', (req, res) => {
     const found = notes.some(notes => notes.id === parseInt(req.params.id));
     
     if(found) {
