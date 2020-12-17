@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const dbfunctions = require('../db/dbfunctions'); 
+// const dbfunctions = require('../db/dbfunctions'); 
 const util = require('util');
 const uuid = require('uuid'); 
 const notes = require('../db/db.json'); 
+const fs = require('fs');
+// const { writeFile, readFile } = require('../db/dbfunctions');
 
 // const getNotes = util.promisify(dbfunctions.readFile) 
 
@@ -10,7 +12,19 @@ const notes = require('../db/db.json');
 router.get('/notes', (req, res) => {
 
     res.json(notes);
-    console.log(notes); 
+    
+    console.log("GET CALL notes", notes); 
+
+    fs.readFile('./db/db.json', 'utf8', function(err, data){   
+        if (err) {
+            throw err;
+        }
+         // Display the file content 
+        const notes = JSON.parse(data);
+        console.log("READ FILE JSON:", notes);      
+    })
+
+     
 //    var t = getNotes().then(notes => {
         // console.log(notes);
         // res.json(notes); 
@@ -41,19 +55,28 @@ router.get('/notes', (req, res) => {
 // });
 
 // //Create new note 
-// router.post('/notes', (req, res) => {
-//     const newNote = {
-//         noteTitle: req.body.title,
-//         noteText: req.body.text,
-         
-//     }
-//     if(!newMember.name || !newMember.email) {
-//        return res.status(400).json({ msg: 'Please include a name and email'});
-//     }
-//     notes.push(newNote);
-//     // res.json(members);
-//     res.redirect('/');
-// }); 
+router.post('/notes', (req, res) => {
+    const newNote = {
+        id: uuid.v4(),
+        noteTitle: req.body.title,
+        noteText: req.body.text,         
+    }
+
+    notes.push(newNote);
+
+    fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {   
+            
+        if(err) throw err 
+           
+        }) 
+        res.redirect('/')   
+
+
+    return res.status(400).json({    
+        status: 'error,',
+         error: 'req body cannot be empty,',
+            });   
+});  
 
 // // update active note
 // router.put('/notes/:title', (req, res) => {

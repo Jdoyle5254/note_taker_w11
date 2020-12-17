@@ -1,23 +1,23 @@
-const util = require('util');
-const fs = require('fs');
-const uuid = require('uuid')
+// const util = require('util');
+// const fs = require('fs');
+// const uuid = require('uuid');
+// const data = require('../db/db.json');
 
 
-
+// 
 // const readFileAsync = util.promisify(fs.readFile) 
-// const writeFileAsync = util.promisify(fs.writeFile) 
+// const appendFileAsync = util.promisify(fs.appendFile) 
 class dbfunctions {
     readFile(){
        //return readFileAsync('./db/db.json', 'utf8', function(err, data){   
-        return fs.readFile('./db/db.json', 'utf8', function(err, data){   
-            if (err) {
-                throw err;
-            }
-        console.log(data);
-
-            // Display the file content 
-                return data; 
-        })
+        // return fs.readFile('./db/db.json', 'utf8', function(err, data){   
+        //     if (err) {
+        //         throw err;
+        //     }
+        //      // Display the file content 
+        //     const notes = JSON.parse(data);
+        //     console.log(notes);      
+        // })
         // .then(data => {
         //     console.log(data);
 
@@ -25,15 +25,16 @@ class dbfunctions {
         // });
     }
 
-    writeFile(){
-        writeFileAsync('./db/db.json', 'utf8', function(err, data){   
-            // Display the file content n (data)
-            return data; 
-        }); 
-    }
+    // appendFile(){
+    //     return fs.appendFile('./db/db.json', JSON.stringify(data), (err) => {   
+    //         if(err) throw err
+    //          console.log("what are you?", data)
+           
+    //     }); 
+    // }
 
 } 
-module.exports = new dbfunctions(); 
+// module.exports = new dbfunctions(); 
 
 // const util = require('util');
 
