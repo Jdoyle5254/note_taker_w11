@@ -4,11 +4,12 @@ const uuid = require('uuid')
 
 
 
-const readFileAsync = util.promisify(fs.readFile) 
-const writeFileAsync = util.promisify(fs.writeFile) 
+// const readFileAsync = util.promisify(fs.readFile) 
+// const writeFileAsync = util.promisify(fs.writeFile) 
 class dbfunctions {
     readFile(){
-       return readFileAsync('./db/db.json', 'utf8', function(err, data){   
+       //return readFileAsync('./db/db.json', 'utf8', function(err, data){   
+        return fs.readFile('./db/db.json', 'utf8', function(err, data){   
             if (err) {
                 throw err;
             }
@@ -16,11 +17,12 @@ class dbfunctions {
 
             // Display the file content 
                 return data; 
-        }).then(data => {
-            console.log(data);
+        })
+        // .then(data => {
+        //     console.log(data);
 
-            return data;
-        });
+        //     return data;
+        // });
     }
 
     writeFile(){
