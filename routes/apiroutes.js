@@ -1,12 +1,26 @@
 const router = require('express').Router();
-const dbfunctions = require('./db/dbfunctions'); 
+const dbfunctions = require('../db/dbfunctions'); 
+const util = require('util');
 
+const getNotes = util.promisify(dbfunctions.readFile) 
 
 
 router.get('/notes', (req, res) => {
-   dbfunctions.readnotes 
-   .then{}
-}); 
+   var t = getNotes().then(notes => {
+        console.log(notes);
+        res.json(notes); 
+    });
+    var k = dbfunctions.readFile();
+    console.log("test " + k);
+
+    
+    // dbfunctions.readFileAsync.then(function(result){
+    //     res.json(result); 
+    // })
+//    dbfunctions.readFileAsync().then(notes => {
+//         res.json(notes); 
+//    });
+});
 
 // get one note
 router.get('/notes/:id', (req, res) => {
