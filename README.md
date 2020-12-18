@@ -23,6 +23,8 @@ create package.json using `npm init`.  The dependencies for this program ar
 To access from a browser:   https://wonderful-note-taker.herokuapp.com/
 
 ## Usage 
+The user navigates to the site they are presented with a create note button, they can click that create and give the note a title and input text.  The user will then be able to save the note and it will remain on the page saved for future use.  The user will also be able to delete their notes as needed and the note will be removed from the note list.  
+
 
 
 ## Credits
