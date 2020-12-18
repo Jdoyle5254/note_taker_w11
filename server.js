@@ -24,8 +24,8 @@ app.use('/', htmlroutes);
 // module.exports = router; 
 // 
 const PORT = 8000;
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`)); 
+
+app.listen(process.env.PORT || 8000); 
 
 
 
