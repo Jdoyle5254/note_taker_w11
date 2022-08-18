@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended: false}));
 
 
 app.use(express.static('public'));
-
+//notes for pushing up to heroku 
 
 app.use('/api', apiroutes);
 app.use('/', htmlroutes); 

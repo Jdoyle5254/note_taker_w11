@@ -1,0 +1,9 @@
+notes for pushing up to heroku
+set up git hub repo and start a project  
+heroku create 
+git add .
+git commit -m "some stuff you just did"
+git push origin main 
+git push heroku main 
+
+
